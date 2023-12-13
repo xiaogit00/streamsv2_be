@@ -1,4 +1,4 @@
-import { NewTrade } from "../types";
+import { NewTrade, Trade } from "../types";
 import { validate } from 'uuid'
 
 
@@ -65,4 +65,22 @@ export const toNewTrade = (body: any): NewTrade => {
         close_id: parseCloseUUID(body.close_id)
       }
       return newTrade
+}
+
+export const toTrade = (body: any): Trade => {
+    const trade: Trade = {
+        id: parseUUID(body.id),
+        ticker: parseString(body.ticker),
+        name: parseString(body.name),
+        qty: parseNumber(body.qty),
+        price: parseNumber(body.qty),
+        type: parseBool(true),
+        currency_id: parseUUID(body.currency_id),
+        exchange_id: parseUUID(body.exchange_id),
+        cost: parseNumber(body.cost),
+        exchange_fees: parseNumber(body.exchange_fees),
+        date: parseDate(body.date),
+        close_id: parseCloseUUID(body.close_id)
+      }
+      return trade
 }
