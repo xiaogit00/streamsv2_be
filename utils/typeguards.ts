@@ -6,6 +6,10 @@ const isString = (text: unknown): text is string => {
 	return typeof text === 'string' || text instanceof String;
 }
 
+const isNumber = (num: unknown): num is number => {
+    return typeof Number(num) === "number";
+  }
+
 const parseString = (text: unknown): string => {
     if (!text || !isString(text)) {
         throw new Error('Incorrect or missing string.')
@@ -14,14 +18,14 @@ const parseString = (text: unknown): string => {
 }
 
 const parseNumber = (text: unknown): number => {
-    if (!text || typeof text !== 'number') {
+    if (!text || !isNumber(text)) {
         throw new Error('Incorrect or missing number.')
     }
     return text
 }
 
 const parseBool = (text: unknown): boolean => {
-    if (!text || typeof text !== 'boolean') {
+    if (text === null || typeof text !== 'boolean') {
         throw new Error('Incorrect or missing boolean.')
     }
     return text
@@ -51,12 +55,13 @@ const parseUUID = (id: string): string => {
 
 
 export const toNewTrade = (body: any): NewTrade => {
+    console.log('here: ',body.type)
     const newTrade: NewTrade = {
         ticker: parseString(body.ticker),
         name: parseString(body.name),
         qty: parseNumber(body.qty),
-        price: parseNumber(body.qty),
-        type: parseBool(true),
+        price: parseNumber(body.price),
+        type: parseBool(body.type),
         currency_id: parseUUID(body.currency_id),
         exchange_id: parseUUID(body.exchange_id),
         cost: parseNumber(body.cost),
@@ -73,8 +78,8 @@ export const toTrade = (body: any): Trade => {
         ticker: parseString(body.ticker),
         name: parseString(body.name),
         qty: parseNumber(body.qty),
-        price: parseNumber(body.qty),
-        type: parseBool(true),
+        price: parseNumber(body.price),
+        type: parseBool(body.type),
         currency_id: parseUUID(body.currency_id),
         exchange_id: parseUUID(body.exchange_id),
         cost: parseNumber(body.cost),
