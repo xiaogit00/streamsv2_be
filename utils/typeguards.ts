@@ -18,7 +18,7 @@ const parseString = (text: unknown): string => {
 }
 
 const parseNumber = (text: unknown): number => {
-    if (!text || !isNumber(text)) {
+    if (text === null || !isNumber(text)) {
         throw new Error('Incorrect or missing number.')
     }
     return text
@@ -55,15 +55,14 @@ const parseUUID = (id: string): string => {
 
 
 export const toNewTrade = (body: any): NewTrade => {
-    console.log('here: ',body.type)
     const newTrade: NewTrade = {
         ticker: parseString(body.ticker),
         name: parseString(body.name),
         qty: parseNumber(body.qty),
         price: parseNumber(body.price),
         type: parseBool(body.type),
-        currency_id: parseUUID(body.currency_id),
-        exchange_id: parseUUID(body.exchange_id),
+        currency: parseString(body.currency),
+        exchange: parseString(body.exchange),
         cost: parseNumber(body.cost),
         exchange_fees: parseNumber(body.exchange_fees),
         date: parseDate(body.date),
@@ -80,8 +79,8 @@ export const toTrade = (body: any): Trade => {
         qty: parseNumber(body.qty),
         price: parseNumber(body.price),
         type: parseBool(body.type),
-        currency_id: parseUUID(body.currency_id),
-        exchange_id: parseUUID(body.exchange_id),
+        currency: parseString(body.currency),
+        exchange: parseString(body.exchange),
         cost: parseNumber(body.cost),
         exchange_fees: parseNumber(body.exchange_fees),
         date: parseDate(body.date),
