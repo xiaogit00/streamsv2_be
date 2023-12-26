@@ -12,7 +12,7 @@ content-type: application/json
     "type": true,
     "currency": "USD",
     "exchange": "NASDAQ",
-    "cost": 151600,
+    "cost": 15543200,
     "exchange_fees": 1000,
     "date": "2023-01-05",
     "close_id": null

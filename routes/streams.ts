@@ -15,12 +15,19 @@ router.get('/', async (_req, res) => {
     res.send(streams.rows)
 });
 
+// GET ALL STREAMS WITH TRADES
+router.get('/with-trades', async (_req, res) => {
+  const streamsTrades = await db.query('SELECT s.id as stream_id, t.* FROM public.streams s JOIN public.stream_trades st ON s.id = st.stream_id JOIN public.trades t ON st.trade_id = t.id')
+  res.send(streamsTrades.rows)
+});
+
+
   // CREATE
 router.post('/', async (req, res) => {
   const newStream: NewStream = toNewStream(req.body)
   const client: PoolClient = await db.connect()
   try {
-    const queryText = 'INSERT INTO public.streams (ticker, name, currency, exchange , date_Created) VALUES ($1, $2, $3, $4, $5) RETURNING *'
+    const queryText = 'INSERT INTO public.streams (ticker, stream_name, currency, exchange, date_created) VALUES ($1, $2, $3, $4, $5) RETURNING *'
     const values = Object.values(newStream)
     const data = await client.query(queryText, values)
     res.status(200).json(data.rows[0])

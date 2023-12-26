@@ -16,7 +16,7 @@ export interface Trade {
 export interface Stream {
     id: string,
     ticker: string,
-    name: string,
+    stream_name: string,
     currency: string,
     exchange: string,
     date_created: Date,

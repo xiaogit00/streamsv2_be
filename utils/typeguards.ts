@@ -81,7 +81,7 @@ export const toNewTrade = (body: any): NewTrade => {
 export const toNewStream = (body: any): NewStream => {
     const newStream: NewStream = {
         ticker: parseString(body.ticker),
-        name: parseString(body.name),
+        stream_name: parseString(body.stream_name),
         currency: parseString(body.currency),
         exchange: parseString(body.exchange),
         date_created: parseDate(body.date_created)
