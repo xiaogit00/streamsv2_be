@@ -1,4 +1,4 @@
-import { NewTrade, Trade } from "../types";
+import { NewStream, NewStreamTrade, NewTrade, StreamTradesRequest, Trade, UUID } from "../types";
 import { validate } from 'uuid'
 
 
@@ -42,16 +42,23 @@ const parseDate = (date: unknown): Date => {
 	return new Date(date);
 };
 
-const parseCloseUUID = (id: string): string | null => {
+const parseCloseUUID = (id: string): UUID | null => {
     if (!id) return null
 	if (!validate(id)) throw new Error('Incorrect or missing id.')
 	return id;
 };
 
-const parseUUID = (id: string): string => {
+export const parseUUID = (id: string): UUID => {
 	if (!id || !validate(id)) throw new Error('Incorrect or missing uuid.')
 	return id;
 };
+
+const parseTradeIdArray = (tradeIds: Array<string>): Array<UUID> => {
+    tradeIds.map((tradeId: string) => {
+        if (!validate(tradeId)) throw new Error('Incorrect or missing uuid.')
+    })
+    return tradeIds
+}
 
 
 export const toNewTrade = (body: any): NewTrade => {
@@ -69,6 +76,33 @@ export const toNewTrade = (body: any): NewTrade => {
         close_id: parseCloseUUID(body.close_id)
       }
       return newTrade
+}
+
+export const toNewStream = (body: any): NewStream => {
+    const newStream: NewStream = {
+        ticker: parseString(body.ticker),
+        name: parseString(body.name),
+        currency: parseString(body.currency),
+        exchange: parseString(body.exchange),
+        date_created: parseDate(body.date_created)
+      }
+      return newStream
+}
+
+export const toNewStreamTrade = (body: any): NewStreamTrade => {
+    const newStreamTrade: NewStreamTrade = {
+        stream_id: parseUUID(body.stream_id),
+        trade_id: parseUUID(body.trade_id)
+      }
+      return newStreamTrade
+}
+
+export const toBulkStreamTrades = (body: any): StreamTradesRequest => {
+    const newStreamTradesRequest: StreamTradesRequest = {
+        stream_id: parseUUID(body.stream_id),
+        trades: parseTradeIdArray(body.trades)
+      }
+      return newStreamTradesRequest
 }
 
 export const toTrade = (body: any): Trade => {

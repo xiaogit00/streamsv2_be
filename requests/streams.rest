@@ -1,0 +1,16 @@
+GET http://localhost:3001/api/streams
+
+###
+POST http://localhost:3001/api/streams
+content-type: application/json
+
+{
+    "ticker": "AAPL",
+    "name": "Apple",
+    "currency": "USD",
+    "exchange": "NASDAQ",
+    "date_created": "2023-01-05"
+}
+
+###
+GET http://localhost:3001/api/streams/31179cb1-d643-441e-b8a7-7ea79aa0868b/trades

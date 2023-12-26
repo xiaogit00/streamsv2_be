@@ -1,0 +1,24 @@
+GET http://localhost:3001/api/stream-trades
+
+###
+POST http://localhost:3001/api/stream-trades
+content-type: application/json
+
+{
+    "stream_id": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+    "trade_id": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
+}
+
+###
+
+POST http://localhost:3001/api/stream-trades/bulk-assign
+content-type: application/json
+
+{
+    "stream_id": "31179cb1-d643-441e-b8a7-7ea79aa0868a",
+    "trades": [
+        "8900d72a-252b-414a-bf32-35c721a5b5d2",
+        "cccb42a5-067d-431b-a837-13250d73fe87",
+        "d00198b1-2f87-46ac-91cc-fff1e4ba7484"
+    ]
+}
