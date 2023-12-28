@@ -61,8 +61,8 @@ const main = async () => {
     await refreshDb()
     console.log("Deleted all tables.")
 
-    await populateDb()
-    console.log("Populated all tables.")
+    // await populateDb()
+    // console.log("Populated all tables.")
     
     process.exit(0)
 }
