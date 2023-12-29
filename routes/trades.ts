@@ -32,5 +32,25 @@ router.post('/', async (req, res) => {
     client.release()
     res.end()
   }
-  
-});
+})
+
+router.delete('/:id', async (req, res) => {
+  const tradeId = req.params.id
+  const client: PoolClient = await db.connect()
+  try {
+    await client.query('BEGIN')
+    const deleteTradeQuery = 'DELETE FROM public.trades t WHERE t.id = $1'
+    await client.query(deleteTradeQuery, [tradeId])
+    const deleteStreamTradesQuery = 'DELETE FROM public.stream_trades st WHERE st.trade_id = $1'
+    await client.query(deleteStreamTradesQuery, [tradeId])
+    await client.query('COMMIT')
+    res.status(200).json("Successfully deleted")
+  } catch (e: unknown) {
+    await client.query('ROLLBACK')
+    console.log("Error:", e)
+    res.status(400).send('An error occurred in adding new trade.')
+  } finally {
+    client.release()
+    res.end()
+  }
+})
