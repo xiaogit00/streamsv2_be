@@ -68,3 +68,25 @@ router.get('/:id/trades', async (req, res) => {
     res.end()
   }
 });
+
+// DELETE ALL STREAMS AND ASSIGNED TRADES
+router.delete('/:id', async (req, res) => {
+  const streamId = parseUUID(req.params.id)
+  const client: PoolClient = await db.connect()
+  try {
+    await client.query('BEGIN')
+    const deleteStreamQuery = 'DELETE FROM public.streams s WHERE id = $1'
+    await client.query(deleteStreamQuery, [streamId])
+    const deleteStreamTradesQuery = 'DELETE FROM public.stream_trades st WHERE stream_id = $1'
+    await client.query(deleteStreamTradesQuery, [streamId])
+    await client.query('COMMIT')
+    res.status(200).json("Successfully deleted stream.")
+  } catch (e: unknown) {
+    await client.query('ROLLBACK')
+    console.log("Error:", e)
+    res.status(400).send('An error occurred in fetching all trades in stream.')
+  } finally {
+    client.release()
+    res.end()
+  }
+})
