@@ -1,19 +1,7 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const app = (0, express_1.default)();
-const db = require('./queries');
-const cors = require('cors');
-app.use(cors());
-app.use(express_1.default.json());
-app.get('/', (_req, res) => {
-    res.send('<h1>hih2</h1>');
-});
-app.get('/trades', db.getTrades);
-const PORT = 3001;
-app.listen(PORT, () => {
+const app_1 = require("./app");
+const PORT = process.env.PORT || 3001;
+app_1.app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });

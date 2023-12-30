@@ -10,6 +10,7 @@ import stream_trades from './routes/stream_trades'
 import guest_tokens from './routes/guest_tokens'
 var morgan = require('morgan')
 
+app.use(express.static('build'))
 app.use(cors())
 app.use(express.json())
 
