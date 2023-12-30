@@ -1,8 +1,10 @@
 GET http://localhost:3001/api/trades
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOnsiYnJvd3NlciI6IjEyMyIsImRldmljZU1vZGVsIjoiRGVza3RvcCIsIm9zIjoiMTIzIiwib3NWZXJzaW9uIjoiMTIzIn0sInRpbWUiOjE3MDM4NTM4OTM4OTgsInVzZXJJZCI6IjAyZWQyMTFmLWVjMzItNDAzMy04OWQ0LWZiYzc4MWMxNTE4ZCIsImlhdCI6MTcwMzg1Mzg5M30.MJ6kMp5i0ugcLf9rWudavDOWyrucDSmHTPPP8k8K-E0
 
 ###
 POST http://localhost:3001/api/trades
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOnsiYnJvd3NlciI6IjEyMyIsImRldmljZU1vZGVsIjoiRGVza3RvcCIsIm9zIjoiMTIzIiwib3NWZXJzaW9uIjoiMTIzIn0sInRpbWUiOjE3MDM4NTM4OTM4OTgsInVzZXJJZCI6IjAyZWQyMTFmLWVjMzItNDAzMy04OWQ0LWZiYzc4MWMxNTE4ZCIsImlhdCI6MTcwMzg1Mzg5M30.MJ6kMp5i0ugcLf9rWudavDOWyrucDSmHTPPP8k8K-E0
 
 {
     "ticker": "AAPL",
@@ -15,8 +17,10 @@ content-type: application/json
     "cost": 15543200,
     "exchange_fees": 1000,
     "date": "2023-01-05",
-    "close_id": null
+    "close_id": null,
+    "user_id": "02ed211f-ec32-4033-89d4-fbc781c1518d"
 }
 
 ###
-DELETE http://localhost:3001/api/trades/a1c9a06d-e2de-42f0-96a3-a9ab7210088a
+DELETE http://localhost:3001/api/trades/da950a3c-8b00-4996-b112-11ff41ea20c5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOnsiYnJvd3NlciI6IjEyMyIsImRldmljZU1vZGVsIjoiRGVza3RvcCIsIm9zIjoiMTIzIiwib3NWZXJzaW9uIjoiMTIzIn0sInRpbWUiOjE3MDM4NTM4OTM4OTgsInVzZXJJZCI6IjAyZWQyMTFmLWVjMzItNDAzMy04OWQ0LWZiYzc4MWMxNTE4ZCIsImlhdCI6MTcwMzg1Mzg5M30.MJ6kMp5i0ugcLf9rWudavDOWyrucDSmHTPPP8k8K-E0

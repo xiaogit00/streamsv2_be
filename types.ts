@@ -40,3 +40,11 @@ export type NewTrade = Omit<Trade, 'id'>
 export type NewStream = Omit<Stream, 'id'>
 
 export type NewStreamTrade = Omit<StreamTrade, 'id'>
+
+export interface DeviceInfo {
+    browser: string,
+    deviceModel: string,
+    os: string,
+    osVersion: string,
+    userId: string
+}

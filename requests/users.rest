@@ -1,0 +1,10 @@
+POST http://localhost:3001/api/guest-tokens
+content-type: application/json
+
+{
+    "browser": "123",
+    "deviceModel": "Desktop",
+    "os": "123",
+    "osVersion": "123",
+    "userId": "02ed211f-ec32-4033-89d4-fbc781c1518d"
+}

@@ -1,18 +1,26 @@
 GET http://localhost:3001/api/streams
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOnsiYnJvd3NlciI6IjEyMyIsImRldmljZU1vZGVsIjoiRGVza3RvcCIsIm9zIjoiMTIzIiwib3NWZXJzaW9uIjoiMTIzIn0sInRpbWUiOjE3MDM4NTM4OTM4OTgsInVzZXJJZCI6IjAyZWQyMTFmLWVjMzItNDAzMy04OWQ0LWZiYzc4MWMxNTE4ZCIsImlhdCI6MTcwMzg1Mzg5M30.MJ6kMp5i0ugcLf9rWudavDOWyrucDSmHTPPP8k8K-E0
 
 ###
 GET http://localhost:3001/api/streams/with-trades
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOnsiYnJvd3NlciI6IjEyMyIsImRldmljZU1vZGVsIjoiRGVza3RvcCIsIm9zIjoiMTIzIiwib3NWZXJzaW9uIjoiMTIzIn0sInRpbWUiOjE3MDM4NTM4OTM4OTgsInVzZXJJZCI6IjAyZWQyMTFmLWVjMzItNDAzMy04OWQ0LWZiYzc4MWMxNTE4ZCIsImlhdCI6MTcwMzg1Mzg5M30.MJ6kMp5i0ugcLf9rWudavDOWyrucDSmHTPPP8k8K-E0
 ###
 POST http://localhost:3001/api/streams
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOnsiYnJvd3NlciI6IjEyMyIsImRldmljZU1vZGVsIjoiRGVza3RvcCIsIm9zIjoiMTIzIiwib3NWZXJzaW9uIjoiMTIzIn0sInRpbWUiOjE3MDM4NTM4OTM4OTgsInVzZXJJZCI6IjAyZWQyMTFmLWVjMzItNDAzMy04OWQ0LWZiYzc4MWMxNTE4ZCIsImlhdCI6MTcwMzg1Mzg5M30.MJ6kMp5i0ugcLf9rWudavDOWyrucDSmHTPPP8k8K-E0
 
 {
     "ticker": "AAPL",
     "stream_name": "Apple2023",
     "currency": "USD",
     "exchange": "NASDAQ",
-    "date_created": "2023-01-05"
+    "date_created": "2023-01-05",
+    "user_id": "02ed211f-ec32-4033-89d4-fbc781c1518d"
 }
 
 ###
 GET http://localhost:3001/api/streams/31179cb1-d643-441e-b8a7-7ea79aa0868b/trades
+
+###
+DELETE http://localhost:3001/api/streams/93ac44de-6197-4d69-805c-ef449897216b
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2UiOnsiYnJvd3NlciI6IjEyMyIsImRldmljZU1vZGVsIjoiRGVza3RvcCIsIm9zIjoiMTIzIiwib3NWZXJzaW9uIjoiMTIzIn0sInRpbWUiOjE3MDM4NTM4OTM4OTgsInVzZXJJZCI6IjAyZWQyMTFmLWVjMzItNDAzMy04OWQ0LWZiYzc4MWMxNTE4ZCIsImlhdCI6MTcwMzg1Mzg5M30.MJ6kMp5i0ugcLf9rWudavDOWyrucDSmHTPPP8k8K-E0
